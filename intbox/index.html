@@ -1,0 +1,326 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta name="generator" content=
+    "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+    <title>
+      IntBox 1.0
+    </title>
+    <link href="../style.css" rel="stylesheet" type="text/css" media="screen">
+    <meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+  </head>
+  <body>
+    <div class="content">
+      <h1>
+        IntBox 1.0 &ndash; A General Purpose Interval Basic Linear Algebra
+        Toolbox
+      </h1>
+      <p>
+        This package, IntBox, contains a C++ implementation that closely
+        follows the 2002 Interval Basic Linear Algebra Subroutines (BLAS)
+        standard for general, symmetric, triangular, banded, symmetric banded,
+        and triangular banded matrices. It is ready to install on machines
+        with GCC or Microsoft Visual Studio .NET 2003 or later.
+      </p>
+      <p>
+        Successful installation should result in the appropriate header files
+        being added to the compiler's default include directory.
+      </p>
+      <p style="font-weight:bold; font-size:small">
+        This library is licensed under the BOOST License. For a copy of the
+        license, see the 'LICENSE' file.
+      </p>
+      <ol class="toc">
+        <li>
+          <a href="#about">About IntBox</a>
+        </li>
+        <li>
+          <a href="#download">Download</a>
+        </li>
+        <li>
+          <a href="#bug">Bug reports</a>
+        </li>
+        <li>
+          <a href="#install">Installation</a>
+          <ol class="l2">
+            <li>
+              <a href="#vs">Windows, using Visual Studio .Net 2003 or
+              later</a>
+            </li>
+            <li>
+              <a href="#gcc">Linux/Unix using GCC</a>
+            </li>
+            <li>
+              <a href="#port">Other platforms</a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="#tester">Testing The Library</a>
+          <ol class="l2">
+            <li>
+              <a href="#tester-app">The Tester</a>
+            </li>
+            <li>
+              <a href="#port-test">Portability Testing</a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="#use">Usage</a>
+        </li>
+      </ol>
+      <h2>
+        <a name="about" id="about">About IntBox</a>
+      </h2>
+      <p>
+        IntBox is an object-oriented interval basic linear algebra subroutines
+        (BLAS) package in C++. The major reference for the design and
+        implementation of this package is the proposed interval BLAS standard.
+        The library consists of arithmetic, algebraic, utility functions, and
+        set operations among intervals, interval vectors and interval
+        matrices. These operations are implemented as methods of the seven
+        template classes in this library. The template class IntervalVector is
+        used for all vector operations. As per the standard there are six
+        different matrix classes: IntervalMatrix, TriIntervalMatrix,
+        SymIntervalMatrix, BandedIntervalMatrix, TriBandedIntervalMatrix and
+        SymBandedIntervalMatrix.
+      </p>
+      <p>
+        The package is designed to be portable, well-tested, and robust with
+        built-in error handling features. It can be easily embedded into an
+        ANSI/ISO C++ environment to enable interval software development.
+        Instructions on package installation, testing, usage, and sample
+        applications are included below.
+      </p>
+      <h3>
+        Boost
+      </h3>
+      <p>
+        IntBox makes use of Boost's interval_lib library to provide the basic
+        interval operations. Their are many good quality interval libraries
+        out there, but we chose boost for a several of reasons. First, the
+        Boost License is very flexible. This allows us to distribute the
+        interval_lib library without having to distribute all of the much
+        larger Boost package. Second, Boost is cross-platform compatible,
+        which is one of the prime goals of the IntBox library. Lastly, Boost's
+        interval library seems to be the most compatible with the proposed
+        standard C++ interval class. Our plan is to eventually use the
+        standard interval class when it made widely available. This means that
+        when the change does occur it can be done with a minimum of effort.
+      </p>
+      <p>
+        You can learn more about Boost at <a href=
+        "http://www.boost.org">www.Boost.org</a>. Or to learn more about
+        boost's interval library visit <a href=
+        "http://www.boost.org/libs/numeric/interval/doc/interval.htm">Interval
+        Arithmetic Library</a> section of Boost's website.
+      </p>
+      <h2>
+        <a name="download" id="download">Download</a>
+      </h2>
+      <p>
+        IntBox can be downloaded at its homepage at the <a href=
+        "http://sun0.cs.uca.edu/interval/intbox/">Computer Science
+        Department</a> at the University of Central Arkansas. The updated
+        package can be downloaded directly using below.
+      </p>
+      <ul>
+        <li>
+          <a href=
+          "http://sun0.cs.uca.edu/interval/intbox/intbox-latest.tgz">*nix
+          package</a> requires make and GCC.
+        </li>
+        <li>
+          <a href=
+          "http://sun0.cs.uca.edu/interval/intbox/intbox-latest.zip">Visual
+          Studio package</a>
+        </li>
+      </ul>
+      <h2>
+        <a name="bug" id="bug">Bug Reports</a>
+      </h2>
+      <p>
+        To report bugs email me at <a href="mailto:mnoonerATucaDOTedu">mnooner
+        AT uca DOT edu</a>. Be sure to include IntBox in the subject line so
+        your email is not mistaken for spam.
+      </p>
+      <h2>
+        <a name="install" id="install">Installation</a>
+      </h2>
+      <p>
+        The library is easy to install. The installation procedures outlined
+        here have been tested using GCC on Ubuntu Linux, and on Windows using
+        Microsoft Visual Studio .Net.
+      </p>
+      <h3>
+        <a name="vs" id="vs">Visual Studio</a>
+      </h3>
+      <p>
+        For quite a while we were issuing a binary installer to use with
+        Visual Studio. But do to Microsoft putting out a new edition every
+        couple of years and our researchers differing versions, we decided it
+        was to difficult to take into account all the various version. So the
+        installation is now done by hand.
+      </p>
+      <ol>
+        <li>Download the zip file.
+        </li>
+        <li>Locate the installation directory for you edition of Visual
+        Studio. This directory can usually be found by first going to the <tt>
+          Program Files</tt> directory. The directory's name changes with each
+          different version of Visual Studio, it is usually begins with
+          "Microsoft Visual Studio" and then is suffixed with a version number
+          or a year number.
+        </li>
+        <li>You will need to copy the contents of the <tt>src</tt> directory
+        to the <tt>vc/include</tt> directory which is within the Visual Studio
+        install directory.
+        </li>
+        <li>You can also copy the <tt>doc</tt> directory to a convenient
+        place.
+        </li>
+        <li>To uninstall the library, just delete the files you copied.
+        </li>
+      </ol>
+      <h3>
+        <a name="gcc" id="gcc">Linux/Unix using GCC</a>
+      </h3>
+      <p>
+        To install this library you will need <code>GCC</code> and
+        <code>make</code>. By default the header files are installed in
+        <tt>/usr/include</tt>, and the documentation is installed in
+        <tt>/usr/share/doc/IntBox-1.0</tt>. If these are not the paths you
+        desire then you can make the appropriate changes to the configuration
+        section of the <tt>Makefile</tt>. <b>Note, you will need root
+        permissions to install in the default location.</b>
+      </p>
+      <ol>
+        <li>Open a console
+        </li>
+        <li>Go to the package's <tt>gcc</tt> folder
+        </li>
+        <li>Type <code>make install</code> This will copy the header files to
+        the compiler's include directory. By installing this library, the
+        Boost interval_lib library is also installed. If you already have
+        boost installed, that installation will not be overwritten.
+        </li>
+        <li>If you wish to create the testing application, type <code>make
+        test</code> to create it.
+        </li>
+        <li>To uninstall the package type <code>make uninstall</code> Note,
+        the uninstaller will not remove the Boost interval_lib library.
+        </li>
+      </ol>
+      <h3>
+        <a name="port" id="port">Other Platforms</a>
+      </h3>
+      <p>
+        The above installation procedures can be used on the platforms we use
+        for testing. The library is tested using Ubuntu Linux 6.1, and Windows
+        XP. If you wish to run the library on another system or using another
+        compiler, the easiest way is probably to edit the <em>Makefile</em>
+        for GCC to have it use your compiler and installation paths.
+        Alternatively, you can simply copy the files and folders in the
+        <tt>src</tt> folder to your project's or compiler's include directory.
+        The code itself is written in ANSI/ISO standard C++, therefore as long
+        as your compiler is fairly standards compliant, the code should
+        function without error. Next, you will need to know if the library
+        works. This is the purpose for including the unit tests with the
+        distribution. If you are not using the <em>Makefile</em>, then simply
+        build and link all the files found in the test directory into one
+        executable.
+      </p>
+      <h2>
+        <a name="tester" id="tester">Testing The Library</a>
+      </h2>
+      <p>
+        You can run the standard test cases for the library using the packaged
+        tester application. For Visual Studio, simply open the solution file
+        in the <tt>msvc</tt> folder. Then compile and run. On Unix like
+        systems. Simply execute <code>make test</code> in the <tt>gcc</tt>
+        folder.
+      </p>
+      <p>
+        The test application is used to run the standard test cases. The
+        application is console based. From the appropriate directory type
+        <code>test -h</code> for a listing of the available options.
+      </p>
+      <h3>
+        <a name="tester-app" id="tester-app">The Tester</a>
+      </h3>
+      <p>
+        The application itself is a simple command line program. The tester
+        simply outputs whether a test passes or fails. As mentioned there are
+        149 individual test cases. To make it simpler to observe the test
+        result the output is split into two parts. First, is a category based
+        output, this simply reports what category of tests is being worked and
+        how many errors resulted. The second output reports on the pass/fail
+        status of each test case. This output is very verbose, hence it is
+        recommended that it be placed in a separate file. The <tt>-v</tt> and
+        <tt>-m</tt> switches allow one to test only the vector or matrix
+        classes. If these are the only switches used then a short test is
+        performed. However, either of the next two switches causes the tester
+        to go into <em>long</em> test mode. In long test mode the tester
+        repetitively performs different test cases using different matrices.
+        The <tt>-r</tt> switch specifies the number of repetitions, and the
+        <tt>-d</tt> switch specifies the maximum size of the vectors and
+        matrices to use.
+      </p>
+      <p>
+        Example:
+      </p>
+      <blockquote>
+        <p>
+          <code>&gt; test -v -m dump.txt</code>
+          <br>
+          This will cause the IntervalVector and IntervalMatrix classes to be
+          tested and the output will be written to the file dump.txt, further
+          the long tests will be skipped.
+          <br>
+          <br>
+          <code>&gt; test -r 40 -m</code>
+          <br>
+          This will perform a long test where many of the cases will be tested
+          forty times using different matrices, whose dimensions range from
+          five twenty. Furthermore, all of the output will be printed on the
+          screen.
+        </p>
+      </blockquote>
+      <h3>
+        <a name="port-test" id="port-test">Portability Testing</a>
+      </h3>
+      <p>
+        Portability tests are carried out by executing the tester on targeted
+        platforms. The library has been tested on two processors, and three
+        operating systems. It was mainly developed using Windows on an Intel
+        Core Duo processor, using Microsoft Visual Studio .NET and GCC 3.4.4
+        running under CygWin. The library was also tested on Ubuntu Linux 6.1
+        on an Intel Pentium 4M using GCC 4.1.2.
+      </p>
+      <h2>
+        <a name="use" id="use">Usage</a>
+      </h2>
+      <p>
+        The IntBox library is easy to use, it is simply a set of header files.
+        Sample C++ programs in the <em>sample</em> directory are ready to be
+        compiled and run. Below are the steps needed in order to make use of
+        the IntBox library.
+      </p>
+      <ol>
+        <li>Include the file <em>&lt;IntBox.hpp&gt;</em> in your source
+        file(s).
+        </li>
+        <li>All classes, functions, global variables, etc. are defined in the
+        intbox name space. So make the appropriate using declarations.
+        </li>
+      </ol>
+      <div class="validate">
+        <a href="http://validator.w3.org/check?uri=referer">[HTML 4.01
+        Strict]</a> <a href=
+        "http://jigsaw.w3.org/css-validator/check/referer">[CSS 2.1]</a>
+      </div>
+    </div>
+  </body>
+</html>
